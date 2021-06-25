@@ -1,12 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Button} from "./Components/Basic/Button";
+import React from "react";
+import "./App.css";
+import { LandingPage } from "./Components/Pages/LandingPage/LandingPage";
 
 function App() {
-  return (
-    <Button buttonLabel="Startknopf"/>
-  );
+    return <LandingPage />;
 }
 
 export default App;
