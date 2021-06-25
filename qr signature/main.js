@@ -1,0 +1,8 @@
+function verify(){
+
+}
+
+
+function createQR(){
+
+}
