@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jsQR.js"></script>
+    <style>
+        .reader{
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="reader" class="reader" width="600px"></div>
+    <script>
+
+        
+        function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            fetch("/verify", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "data": decodedText
+                })
+            })
+                .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                });
+        }
+
+        function onScanFailure(error) {
+            // handle scan failure, usually better to ignore and keep scanning.
+            // for example:
+            console.warn(`Code scan error = ${error}`);
+        }
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 }, true);
+        html5QrcodeScanner.render(onScanSuccess)
+
+
+        // This method will trigger user permissions
+
+        /*Html5Qrcode.getCameras().then(devices => {
+            if (devices && devices.length) {
+                let cameraId = devices[0].id;
+
+                // .. use this to start scanning.
+                const html5QrCode = new Html5Qrcode("reader", false);
+                html5QrCode.start(
+                    cameraId,
+                    {
+                        fps: 10,    // Optional, frame per seconds for qr code scanning
+                        qrbox: 250  // Optional, if you want bounded box UI
+                    },
+                    (decodedText, decodedResult) => {
+                        // do something when code is read
+                        console.log(decodedText)
+                        console.log("yes")
+                    },
+                    (errorMessage) => {
+                        console.log(errorMessage)
+                        // parse error, ignore it.
+                    })
+                    .catch((err) => {
+                        console.log("failed")
+                        // Start failed, handle it.
+                    });
+            }
+        }).catch(err => {
+            // handle err
+        });
+        */
+
+    </script>
+</body>
+</html>
