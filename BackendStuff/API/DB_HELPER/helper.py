@@ -46,7 +46,7 @@ class DBAPI:
         if not self.__check_date(date):
             return False
 
-        self.cursor.execute("UPDATE availableTickets SET availableTickets=%s WHERE date='%s';" % (ticket_count, date))
+        self.cursor.execute("UPDATE AvailableTickets SET availableTickets=%s WHERE date='%s';" % (ticket_count, date))
         self.ticketdb.commit()
         return True
 

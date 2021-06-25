@@ -15,15 +15,18 @@ def home():
 def get_tickets():
     date = request.args.get("date")
     tickets = db_handler.get_tickets_by_date(date)
-    make_response(jsonify({"available_tickets": "%s" % tickets}), 200)
+    return jsonify({"available_tickets": "%s" % tickets}), 200
 
 @app.route('/ticket/bookTicket', methods=["POST"])
 def book_ticket():
     keys = ["email", "name", "date", "publicKey"]
     json_data = request.json
 
-    if not json_data or keys[0] in json_data or keys[1] in json_data or keys[2] in json_data or keys[3] in json_data:
+    if not json_data:
         abort(400)
+    for key in keys:
+        if key not in json_data:
+            abort(400)
     emailHash = sha3_512(json_data[keys[0]].encode("utf-8")).hexdigest()
     nameHash = sha3_512(json_data[keys[1]].encode("utf-8")).hexdigest()
     date = json_data[keys[2]]
@@ -76,7 +79,7 @@ def valid_ticket():
     if json_data["valid"] == True:
         db_handler.del_entry(nameHash, emailHash, date, ticketId)
 
-    return 200
+    return ("200", 200)
 
 
 app.run()
