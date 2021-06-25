@@ -1,0 +1,35 @@
+.input-name {
+    background-color: rgb(230, 230, 230);
+    width: 600px;
+    height: 40px;
+    border-style: none;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    line-height: 1.7em;
+}
+.input-email {
+    background-color: rgb(230, 230, 230);
+    width: 600px;
+    height: 40px;
+    border-style: none;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    line-height: 1.7em;
+}
+.input-adress {
+    background-color: rgb(230, 230, 230);
+    width: 600px;
+    height: 40px;
+    border-style: none;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    line-height: 1.7em;
+}
+
+.purchase-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    flex-direction: column;
+}

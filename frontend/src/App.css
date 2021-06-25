@@ -9,3 +9,7 @@ h2 {
     font-family: "Zilla Slab", serif;
     color: rgb(38, 48, 102);
 }
+
+*:focus {
+    outline: none;
+}

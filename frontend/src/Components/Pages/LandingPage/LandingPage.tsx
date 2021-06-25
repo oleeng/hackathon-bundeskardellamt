@@ -7,6 +7,7 @@ export const LandingPage = () => {
     // Helper
     const buyTicketContent =
         "Kaufen Sie Ihre Tickets bequem online und checken Sie beim Besuch ganz einfach per QR-Code ein.";
+
     return (
         <div className="landing-page">
             <div className="blur-filter"></div>

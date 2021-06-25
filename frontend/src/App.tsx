@@ -10,11 +10,15 @@ import {
 
 import "./App.css";
 import { LandingPage } from "./Components/Pages/LandingPage/LandingPage";
+import { PurchasePage } from "./Components/Pages/PurchasePage/PurchasePage";
 
 function App() {
     return (
         <Router>
             <Switch>
+                <Route path="/purchase">
+                    <PurchasePage />
+                </Route>
                 <Route path="/">
                     <LandingPage />
                 </Route>
